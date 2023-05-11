@@ -18,6 +18,9 @@
     "default_popup": "popup.html"
   },
   "options_page" : "options.html",
-  "permissions": ["storage"]
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
+  }
   
 }
