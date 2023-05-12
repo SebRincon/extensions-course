@@ -6,8 +6,13 @@ chrome.alarms.create("timerAlarm", {
 
 // Alarm listener
 chrome.alarms.onAlarm.addListener((alarm) => {
-  chrome.storage.local.get(["timer"], (res) => {
+  chrome.storage.local.get(["timer", "isRunning"], (res) => {
     const time = res.timer ?? 0;
+    const isRunning = res.isRunning ?? true;
+
+    if (!isRunning) {
+      return;
+    }
     // Increasing the timer state
     chrome.storage.local.set({
       timer: time + 1,
